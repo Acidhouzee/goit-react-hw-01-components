@@ -1,14 +1,22 @@
 import React from 'react';
 import 'components/FriendList/FriendList.css'
 
-export const FriendList = ( {friends} ) => (   
+const RenderFriendList = ( {props} ) => (   
     <ul className="friend-list">
-        {friends.map((friend, index) => (
+        {props.map((prop, index) => (
             <li key={index} className="item">
-                <span className={friend.isOnline ? 'is-online' : 'is-offline'}></span>
-                <img className="avatar" src={friend.avatar} alt="User avatar" width="48" />
-                <p className="name">{friend.name}</p>
+                <span className={prop.isOnline ? 'is-online' : 'is-offline'}></span>
+                <img className="avatar" src={prop.avatar} alt="User avatar" width="48" />
+                <p className="name">{prop.name}</p>
             </li>
         ))}
     </ul>
 );
+
+export const FriendList = ( {friends} ) => (   
+    <ul className="friend-list">
+        <RenderFriendList props={friends} />
+    </ul>
+);
+
+
